@@ -26,11 +26,12 @@ class UploadController extends Controller
 
     public function show()
     {
-        //return Storage::files('public');
-        // Storage::makeDirectory('public/make');
-        // Storage::deleteDirectory('public/make');
-        //return Storage::allFiles('public');
-        $url = Storage::url('new_pic.png');
-        return "<img src='".$url."'/>";
+        //return Storage::size('public/new_pic.png');
+        // return Storage::lastModified('public/new_pic.png');
+        // Storage::copy('public/new_pic.png', 'new_pic.png');
+        if (Storage::move('public/new_pic.png', 'new_pic.png')) {
+            return 'File moved';
+        }
+        
     }
 }
