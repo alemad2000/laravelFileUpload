@@ -16,8 +16,9 @@ class UploadController extends Controller
     {
         if($request->hasFile('image')){
             $request->file('image');
+            return $request->image->storeAs('public', 'new_pic.png');
             // return $request->image->extension();
-            return Storage::putFile('public/new', $request->file('image'));
+            // return Storage::putFile('public/new', $request->file('image'));
         }else{
             return 'No file selected';
         }
@@ -28,6 +29,8 @@ class UploadController extends Controller
         //return Storage::files('public');
         // Storage::makeDirectory('public/make');
         // Storage::deleteDirectory('public/make');
-        return Storage::allFiles('public');
+        //return Storage::allFiles('public');
+        $url = Storage::url('new_pic.png');
+        return "<img src='".$url."'/>";
     }
 }
