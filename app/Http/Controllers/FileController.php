@@ -14,15 +14,21 @@ class FileController extends Controller
 
     public function storeFile(request $request)
     {
-        if ($request->hasFile('file')) {
-            $filename = $request->file->getClientOriginalName();
-            $filesize = $request->file->getClientSize();
-            $request->file->storeAs('public/upload', $filename);
+        // return $request->all();
 
-            $file = new File;
-            $file->name = $filename;
-            $file->size = $filesize;
-            $file->save();
+        if ($request->hasFile('file')) {
+
+            foreach ($request->file as $file){
+                $filename = $file->getClientOriginalName();
+                $filename = $file->getClientOriginalName();
+                $filesize = $file->getClientSize();
+                $file->storeAs('public/upload', $filename);
+    
+                $fileModel = new File;
+                $fileModel->name = $filename;
+                $fileModel->size = $filesize;
+                $fileModel->save();
+            }
             return 'ok';
         }
         return $request->all();

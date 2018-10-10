@@ -14,7 +14,7 @@
                 <h1>Upload File</h1>
                 <form action="{{ route('upload.file') }}" enctype="multipart/form-data" method="POST">
                 {{ csrf_field() }}
-                    <input type="file" name="file">
+                    <input type="file" name="file[]" multiple>
                     <input type="submit" value="Upload">
                 </form>
             </div>
