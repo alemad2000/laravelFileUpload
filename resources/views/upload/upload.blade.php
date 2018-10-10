@@ -12,11 +12,17 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Upload File</h1>
-                <form action="/store" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('upload.file') }}" enctype="multipart/form-data" method="POST">
                 {{ csrf_field() }}
-                    <input type="file" name="image">
+                    <input type="file" name="file">
                     <input type="submit" value="Upload">
                 </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Show File</h1>
+                <img src="{{ asset('storage/upload/descarga.png') }}" alt="">
             </div>
         </div>
     </div>

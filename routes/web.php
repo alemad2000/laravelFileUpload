@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::get('upload', 'UploadController@index');
 Route::post('store', 'UploadController@store');
 Route::get('show', 'UploadController@show');
+
+Route::get('file', 'FileController@showUploadForm')->name('upload.file');
+Route::post('file', 'FileController@storeFile');
+
+
