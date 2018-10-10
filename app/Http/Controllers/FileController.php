@@ -33,4 +33,9 @@ class FileController extends Controller
         }
         return $request->all();
     }
+
+    public function getFile($filename)
+    {
+        return response()->download(Stortage_path('app/public/upload/'.$filename), null, [], null);
+    }
 }

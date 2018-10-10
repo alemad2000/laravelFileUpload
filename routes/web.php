@@ -23,3 +23,8 @@ Route::get('file', 'FileController@showUploadForm')->name('upload.file');
 Route::post('file', 'FileController@storeFile');
 
 
+
+Auth::routes();
+
+Route::get('uploadFile/{filename}', 'FileController@getFile')->name('get.file')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home');
